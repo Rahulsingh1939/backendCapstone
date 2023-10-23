@@ -10,11 +10,12 @@ const app = express()
 
 const dotenv = require('dotenv')
 dotenv.config()
-
+const connectDB = require('./config/db')
+connectDB();
 
 //Environmental Variables
 const PORT = process.env.PORT || 3000
-const MONGODB_URL = processs.env.MONGODB_URL
+const MONGODB_URL = process.env.MONGODB_URL
 
 
 //Global MiddleWares
@@ -33,19 +34,13 @@ app.get('/',(req,res)=>{
 
 
 
+//APP LISTENING ON PORT
 app.listen(PORT,(error)=>{
     if(error){
         console.log(error)
         console.log('Error Occured')
     }
     else {
-        mongoose.connect(MONGODB_URL)
-        .then(()=>{
-            console.log('Server Up SuccessFully')
-        })
-        .catch(error=>{
-            console.log('Error Connecting DataBase')
-            console.log(error)
-        })
+            console.log(`Server Up On ${PORT}`)
     }
 })
