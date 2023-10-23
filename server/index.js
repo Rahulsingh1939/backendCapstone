@@ -39,7 +39,7 @@ app.listen(PORT,(error)=>{
         console.log('Error Occured')
     }
     else {
-        mongoose.connect()
+        mongoose.connect(MONGODB_URL)
         .then(()=>{
             console.log('Server Up SuccessFully')
         })
