@@ -1,14 +1,10 @@
 const healthController = (req,res) =>  {
     try{
-            res.json({
-                status:'OK',
-                Message : 'EveryThing Fine'
-            })
-            
+            res.sendFile(__dirname+'/public/running.html')
     } catch(err)
     {
         console.log(err);
-        res.sendFile(__dirname+'/error.html')
+        res.sendFile(__dirname+'/public/error.html')
     }
 }
 

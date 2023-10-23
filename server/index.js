@@ -24,7 +24,7 @@ const healthRoute = require('./routes/healthRoute')
 //Global MiddleWares
 app.use(bodyparser.urlencoded({extended:true}))
 app.use(bodyparser.json())
-app.use(express.static('public'))
+app.use(express.static(path.join(__dirname, 'public')));
 app.use(cors())
 
 app.set('view engine','ejs')
