@@ -18,10 +18,13 @@ const PORT = process.env.PORT || 3000
 const MONGODB_URL = process.env.MONGODB_URL
 
 
+//
+const healthRoute = require('./routes/healthRoute')
+
 //Global MiddleWares
 app.use(bodyparser.urlencoded({extended:true}))
 app.use(bodyparser.json())
-app.use(express.static('./public'))
+app.use(express.static('public'))
 app.use(cors())
 
 app.set('view engine','ejs')
@@ -32,6 +35,9 @@ app.get('/',(req,res)=>{
             message: 'Everything Fine'})
 })
 
+// ROUTES
+// app.use('/api/v1',)
+app.use('/api/health',healthRoute)
 
 
 //APP LISTENING ON PORT
